@@ -64,18 +64,27 @@ def search(meta_info, user_setting):
         return meta_data_list
     get_artist_info(result)
     get_album_info(result)
+    get_hot_comment(result)
     meta_data = MetaData()
-
     # Album
     album = Album()
     album.title = result.get('album').get('name')
-    album.summary = result.get('album').get('description')
+    if result.get('album').get('description'):
+        album.summary = result.get('album').get('description')
     album.studio = result.get('album').get('company')
     album.tags = result.get('album').get('tags')
     album.collections = result.get('album').get('subType')
     album.poster = get_picture_base64(result.get('album').get('picUrl'))
     album.originally_available_at = datetime.datetime.fromtimestamp(
         result.get('album').get('publishTime') / 1000).strftime('%Y-%m-%d')
+    for review in result['reviews'].get('topComments'):
+        album.reviews.append(review.get('user').get('nickname') + ': ' + review.get('content'))
+    for review in result['reviews'].get('hotComments'):
+        album.reviews.append(review.get('user').get('nickname') + ': ' + review.get('content'))
+    if user_setting.get('hotComment'):
+        album.summary += '\n 网易云热门评论： '
+        for review in album.reviews:
+            album.summary += '\n ' + review.replace('\n', '')
     meta_data.album = album
 
     # Artist
@@ -197,6 +206,10 @@ def get_album_info(result):
     uri = '/album?id=' + str(result.get('album').get('id'))
     result['album'] = netease_api(uri).get('album')
 
+
+def get_hot_comment(result):
+    uri = '/comment/album?id=' + str(result.get('album').get('id'))
+    result['reviews'] = netease_api(uri)
 
 def netease_api(uri):
     query_url = url + uri

@@ -29,7 +29,11 @@ def get_info(lang):
 def get_settings(lang):
     i18n = I18n(lang)
     form = [
-
+        {
+            'type': 'switch',
+            'label': '专辑简介包含热门评论',
+            'model': 'hotComment',
+        }
     ]
     return form
 
