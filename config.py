@@ -29,46 +29,7 @@ def get_info(lang):
 def get_settings(lang):
     i18n = I18n(lang)
     form = [
-        {
-            'type': 'text',
-            'label': 'text',
-            'model': 'text_model',
-            'place_holder': 'place_holder',
-        },
-        {
-            'type': 'select',
-            'label': 'select',
-            'model': 'select_model',
-            'option': [
-                {
-                    'label': 'label-1',
-                    'value': 'value-1'
-                },
-                {
-                    'label': 'label-2',
-                    'value': 'value-2'
-                },
-            ]
-        },
-        {
-            'type': 'switch',
-            'label': 'switch',
-            'model': 'switch_model',
-        },
-        {
-            'type': 'radio',
-            'label': 'radio',
-            'model': 'radio_model',
-            'place_holder': 'place_holder',
-            'option': [
-                {
-                    'label': 'label-1'
-                },
-                {
-                    'label': 'label-2'
-                },
-            ]
-        },
+
     ]
     return form
 
