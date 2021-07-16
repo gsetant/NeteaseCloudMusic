@@ -1,9 +1,13 @@
 # NeteaseCloudMusic
 
-#### 适用于Gsetant平台的网易云音乐搜刮器，可实现基于歌曲名称，歌手名称，专辑名称的搜刮和匹配。Gsetant中可在管理员插件管理页面通过本项目地址进行自动安装 https://github.com/gsetant/NeteaseCloudMusic
+#### [English](README.md) [简体中文](README-cn.md)
 
-#### 此搜刮器需要结合使用网易云API进行数据爬取，需要用户自行部署以下API服务 https://github.com/Binaryify/NeteaseCloudMusicApi 
+#### The NetEase Cloud Music scraper for Gsetant platform can search and match based on song name, artist name, and album name. Gsetant can be automatically installed through this project address on the administrator plug-in management page https://github.com/gsetant/NeteaseCloudMusic
 
-#### 用户需要手动修改main.py文件中全局变量url的值为可用的网易云API地址(默认为 http://127.0.0.1:3000)
 
+#### This scraper needs to be combined with Netease Cloud API for data scrape, and users need to deploy the following API services by themselves https://github.com/Binaryify/NeteaseCloudMusicApi
+
+#### If you use the public Gsetant server, you do not need the install the API services.
+
+#### The user needs to manually modify the value of the global variable url in the main.py file to the available NetEase Cloud API address (the default is http://127.0.0.1:3000)
 
